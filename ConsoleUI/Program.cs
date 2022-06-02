@@ -22,11 +22,11 @@ namespace ConsoleUI
             //    BrandName="TOGG"
             //});
 
-            CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var item in carManager.GetByCarDetails())
-            {
-                Console.WriteLine(item.BrandName+"/"+ item.ColourName);
-            }
+            //CarManager carManager = new CarManager(new EfCarDal());
+            //foreach (var item in carManager.GetByCarDetails())
+            //{
+            //    Console.WriteLine(item.BrandName+"/"+ item.ColourName);
+            //}
             Console.WriteLine("Hello World!");
         }
     }
