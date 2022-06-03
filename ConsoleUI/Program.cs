@@ -28,9 +28,17 @@ namespace ConsoleUI
             //Description="araba gibi araba",ModelYear="2021"});
 
             //RentalManager rentalManager = new RentalManager(new EfRentalDal());
-            //rentalManager.Add(new Rental {CarId=1,CustomerId=1 });
+            //rentalManager.Add(
+            //    new Rental
+            //    {
+            //        CarId = 1,
+            //        CustomerId = 1,
+            //        RentDate = DateTime.Now,
+            //        ReturnDate = DateTime.Now.AddDays(2)
+            //    });
 
-
+            CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
+            categoryManager.Add(new Category { Name="Otomobil"});
 
             //BrandManager brandManager = new BrandManager(new EfBrandDal());
             //brandManager.Add(new Brand
@@ -38,16 +46,16 @@ namespace ConsoleUI
             //    BrandName = "Kartal"
             //});
 
-            CarManager carManager = new CarManager(new EfCarDal());
+            //CarManager carManager = new CarManager(new EfCarDal());
 
-            var result = carManager.GetCarDetails();
+            //var result = carManager.GetCarDetails();
 
-            
-            foreach (var item in carManager.GetCarDetails().Data)
-            {
-                Console.WriteLine(item.BrandName + "/" + item.ColourName);
-            }
-            Console.WriteLine("Hello World!");
+
+            //foreach (var item in carManager.GetCarDetails().Data)
+            //{
+            //    Console.WriteLine(item.BrandName + "/" + item.ColourName);
+            //}
+            //Console.WriteLine("Hello World!");
         }
     }
 }

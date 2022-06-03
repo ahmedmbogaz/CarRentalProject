@@ -21,11 +21,14 @@ namespace DataAccess.Concrete.EntityFramework
                              on r.CarId equals c.Id
                              join u in context.Customers
                              on r.CustomerId equals u.Id
-
+                             
+                             join us in context.Users
+                             on u.UserId equals us.Id
                              select new RentalDetailDto
                              {
                                  Id=r.Id,
-                                 CompanyName=u.CompanyName,
+                                 UserName=$"{us.FirstName} {us.LastName}",  //us.FirstName + " "+us.LastName,
+                                 CompanyName =u.CompanyName,
                                  CarName=c.CarName,
                                  ReturnDate=r.ReturnDate,
                                  RentDate=r.RentDate

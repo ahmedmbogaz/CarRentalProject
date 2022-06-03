@@ -13,5 +13,7 @@ namespace Business.Constants
         public static string CarNameEror = "Car Name Eror.!";
         public static string CarDelete = "Car Name silindi.!";
         public static string CarUpdate = "Car Name guncellendi.!";
+        public static string CarNotAdded= "Car Not Added.";
+        public static string CategoryAdded= "Category Added.!";
     }
 }

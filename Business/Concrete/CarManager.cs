@@ -23,9 +23,9 @@ namespace Business.Concrete
 
         public IResult Add(Car car)
         {
-            if (car.Description.Length<2)
+            if (car.CarName.Length<2)
             {
-                return new ErrorResult(Messages.CarAdded);
+                return new ErrorResult(Messages.CarNotAdded);
             }
             return new SuccessResult(Messages.CarNameInvalide);
         }
@@ -47,7 +47,7 @@ namespace Business.Concrete
 
         public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
-            return new SuccessDataResult<List<CarDetailDto>> (_carDal.GetByCarDetails());
+            return new SuccessDataResult<List<CarDetailDto>> (_carDal.GetCarDetails());
         }
 
         public IDataResult<List<Car>> GetByUnitPrice(int min, int max)
