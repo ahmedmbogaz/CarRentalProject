@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface ICarDal:IEntityRepository<Car>
+    public interface IRentalDal:IEntityRepository<Rental>
     {
-        List<CarDetailDto> GetCarDetails(); //ürünün detayların ıgetir demek
+        public List<RentalDetailDto> GetByRentalDetails();
     }
 }

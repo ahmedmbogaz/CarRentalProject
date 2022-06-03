@@ -20,14 +20,9 @@ namespace Business.Concrete
 
         public void Add(Brand brand)
         {
-            if (brand.BrandName.Length>3 )
-            {
+            
                 _brandDal.Add(brand);
-            }
-            else
-            {
-                Console.WriteLine("Araba ismi minimum 2 karakter olablir.");
-            }
+            
         }
 
         public List<Brand> GetAll()

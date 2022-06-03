@@ -1,4 +1,5 @@
 ﻿using Core.DataAccess;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Entities.DTOs;
 using System;
@@ -9,8 +10,8 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface ICarDal:IEntityRepository<Car>
+    public interface ICustomerDal:IEntityRepository<Customer>
     {
-        List<CarDetailDto> GetCarDetails(); //ürünün detayların ıgetir demek
+        List<CustomerDetailDto> GetByCarDetails();
     }
 }

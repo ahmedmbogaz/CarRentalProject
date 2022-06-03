@@ -30,6 +30,12 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CarNameInvalide);
         }
 
+        public IResult Delete(Car car)
+        {
+            _carDal.Delete(car);
+            return new SuccessResult(Messages.CarDelete);
+        }
+
         public IDataResult<List<Car>> GetAll()
         {
             if (DateTime.Now.Hour==13)
@@ -39,7 +45,7 @@ namespace Business.Concrete
             return new SuccessDataResult <List<Car>>( _carDal.GetAll(), Messages.CarAdded);
         }
 
-        public IDataResult<List<CarDetailDto>> GetByCarDetails()
+        public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
             return new SuccessDataResult<List<CarDetailDto>> (_carDal.GetByCarDetails());
         }
@@ -57,6 +63,12 @@ namespace Business.Concrete
         public IDataResult<List<Car>> GetCarsByColourId(int id)
         {
             return new SuccessDataResult<List<Car>> (_carDal.GetAll(p => p.ColorId == id));
+        }
+
+        public IResult Update(Car car)
+        {
+            _carDal.Update(car);
+            return new SuccessResult(Messages.CarUpdate);
         }
     }
 }

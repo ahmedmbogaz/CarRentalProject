@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -17,6 +18,12 @@ namespace Business.Concrete
         public ColourManager(IColourDal colourDal)
         {
             _colourDal = colourDal;
+        }
+
+        public IResult Add(Colour colour)
+        {
+            _colourDal.Add(colour);
+            return new SuccessResult();
         }
 
         public List<Colour> GetAll()

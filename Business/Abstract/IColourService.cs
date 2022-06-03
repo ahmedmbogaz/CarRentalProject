@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Core.Utilities.Results;
+using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
@@ -15,5 +16,6 @@ namespace Business.Abstract
         List<Colour> GetCarsByColourId(int id);
         List<Colour> GetByUnitPrice(int min, int max);
         List<CarDetailDto> GetByCarDetails(); // bu lazım mı ?
+        IResult Add(Colour colour);
     }
 }
