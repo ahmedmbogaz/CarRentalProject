@@ -37,8 +37,8 @@ namespace ConsoleUI
             //        ReturnDate = DateTime.Now.AddDays(2)
             //    });
 
-            CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
-            categoryManager.Add(new Category { Name="Otomobil"});
+            //CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
+            //categoryManager.Add(new Category { Name="Otomobil"});
 
             //BrandManager brandManager = new BrandManager(new EfBrandDal());
             //brandManager.Add(new Brand
@@ -46,15 +46,15 @@ namespace ConsoleUI
             //    BrandName = "Kartal"
             //});
 
-            //CarManager carManager = new CarManager(new EfCarDal());
+            CarManager carManager = new CarManager(new EfCarDal());
 
             //var result = carManager.GetCarDetails();
 
 
-            //foreach (var item in carManager.GetCarDetails().Data)
-            //{
-            //    Console.WriteLine(item.BrandName + "/" + item.ColourName);
-            //}
+            foreach (var item in carManager.GetCarDetails().Data)
+            {
+                Console.WriteLine(item.BrandName + "/" + item.ColourName);
+            }
             //Console.WriteLine("Hello World!");
         }
     }

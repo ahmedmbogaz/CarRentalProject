@@ -47,7 +47,7 @@ namespace Business.Concrete
 
         public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
-            return new SuccessDataResult<List<CarDetailDto>> (_carDal.GetCarDetails());
+            return new SuccessDataResult<List<CarDetailDto>> (_carDal.GetCarDetails(),Messages.CarNotAdded);
         }
 
         public IDataResult<List<Car>> GetByUnitPrice(int min, int max)
