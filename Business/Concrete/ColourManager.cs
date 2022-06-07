@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -19,36 +20,27 @@ namespace Business.Concrete
         {
             _colourDal = colourDal;
         }
-
         public IResult Add(Colour colour)
         {
             _colourDal.Add(colour);
-            return new SuccessResult();
+            return new SuccessResult(Messages.CarAdded);
         }
 
-        public List<Colour> GetAll()
+        public IResult Delete(Colour colour)
         {
-            return _colourDal.GetAll();
+            _colourDal.Delete(colour);
+            return new SuccessResult(Messages.CarDelete);
         }
 
-        public List<CarDetailDto> GetByCarDetails()
+        public IDataResult<List<Colour>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<Colour>>(_colourDal.GetAll());
         }
 
-        public List<Colour> GetByUnitPrice(int min, int max)
+        public IResult Update(Colour colour)
         {
-            throw new NotImplementedException();
-        }
-
-        public List<Colour> GetCarsByBrandId(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Colour> GetCarsByColourId(int id)
-        {
-            throw new NotImplementedException();
+            _colourDal.Update(colour);
+            return new SuccessResult(Messages.CarUpdate);
         }
     }
 }

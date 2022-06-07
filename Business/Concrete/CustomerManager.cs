@@ -20,14 +20,10 @@ namespace Business.Concrete
         {
             _customerDal = customerDal;
         }
-
         public IResult Add(Customer customer)
         {
-            if (customer.CompanyName.Length < 2)
-            {
-                return new ErrorResult(Messages.CarAdded);
-            }
-            return new SuccessResult();
+            _customerDal.Add(customer);
+            return new SuccessResult(Messages.CarAdded);
         }
 
         public IResult Delete(Customer customer)
@@ -38,27 +34,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Customer>> GetAll()
         {
-            throw new NotImplementedException();
-        }
-
-        public IDataResult<List<CustomerDetailDto>> GetByCarDetails()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IDataResult<List<Customer>> GetByUnitPrice(int min, int max)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IDataResult<List<Customer>> GetCarsByBrandId(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IDataResult<List<Customer>> GetCarsByColourId(int id)
-        {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(), Messages.CarNotAdded);
         }
 
         public IResult Update(Customer customer)

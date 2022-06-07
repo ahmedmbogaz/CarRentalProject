@@ -11,11 +11,9 @@ namespace Business.Abstract
 {
     public interface IColourService
     {
-        List<Colour> GetAll();
-        List<Colour> GetCarsByBrandId(int id);
-        List<Colour> GetCarsByColourId(int id);
-        List<Colour> GetByUnitPrice(int min, int max);
-        List<CarDetailDto> GetByCarDetails(); // bu lazım mı ?
+        IDataResult<List<Colour>> GetAll();
         IResult Add(Colour colour);
+        IResult Update(Colour colour);
+        IResult Delete(Colour colour);
     }
 }

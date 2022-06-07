@@ -19,11 +19,27 @@ namespace Business.Concrete
         {
             _categoryDal = categoryDal;
         }
-
         public IResult Add(Category category)
         {
             _categoryDal.Add(category);
-            return new SuccessResult(Messages.CategoryAdded);
+            return new SuccessResult(Messages.CarAdded);
+        }
+
+        public IResult Delete(Category category)
+        {
+            _categoryDal.Delete(category);
+            return new SuccessResult(Messages.CarDelete);
+        }
+
+        public IDataResult<List<Category>> GetAll()
+        {
+            return new SuccessDataResult<List<Category>>(_categoryDal.GetAll());
+        }
+
+        public IResult Update(Category category)
+        {
+            _categoryDal.Update(category);
+            return new SuccessResult(Messages.CarUpdate);
         }
     }
 }
