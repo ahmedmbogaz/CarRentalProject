@@ -26,9 +26,9 @@ namespace WebAPI.Controllers
             var result = _categoryService.GetAll();
             if (result.Success)
             {
-                return Ok();
+                return Ok(result.Data);
             }
-            return BadRequest();
+            return BadRequest(result.Message);
         }
 
         [HttpPost("add")]
@@ -37,7 +37,7 @@ namespace WebAPI.Controllers
             var result = _categoryService.Add(category);
             if (result.Success)
             {
-                return Ok();
+                return Ok(result.Message);
             }
             return BadRequest();
         }

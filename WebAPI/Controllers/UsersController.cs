@@ -26,9 +26,9 @@ namespace WebAPI.Controllers
             var result = _userService.GetAll();
             if (result.Success)
             {
-                return Ok();
+                return Ok(result.Data);
             }
-            return BadRequest();
+            return BadRequest(result.Message);
         }
 
         [HttpPost("add")]

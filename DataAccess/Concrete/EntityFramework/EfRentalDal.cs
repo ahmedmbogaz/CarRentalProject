@@ -30,7 +30,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  UserName=$"{us.FirstName} {us.LastName}",  //us.FirstName + " "+us.LastName,
                                  CompanyName =u.CompanyName,
                                  CarName=c.CarName,
-                                 ReturnDate=r.ReturnDate,
+                                 ReturnDate=(DateTime)r.ReturnDate,
                                  RentDate=r.RentDate
                              };
                 return result.ToList();

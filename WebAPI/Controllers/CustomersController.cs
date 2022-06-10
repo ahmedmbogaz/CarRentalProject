@@ -26,9 +26,9 @@ namespace WebAPI.Controllers
             var result = _customerService.GetAll();
             if (result.Success)
             {
-                return Ok();
+                return Ok(result.Data);
             }
-            return BadRequest();
+            return BadRequest(result.Message);
         }
 
         [HttpPost("add")]
@@ -37,7 +37,7 @@ namespace WebAPI.Controllers
             var result = _customerService.Add(customer);
             if (result.Success)
             {
-                return Ok();
+                return Ok(result.Success);
             }
             return BadRequest();
         }

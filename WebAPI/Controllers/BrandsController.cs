@@ -26,18 +26,18 @@ namespace WebAPI.Controllers
             var result = _brandService.GetAll();
             if (result.Success)
             {
-                return Ok(result);
+                return Ok(result.Data);
             }
             return BadRequest(result);
         }
 
-        [HttpPost("update")]
+        [HttpPost("add")]
         public IActionResult Add(Brand brand)
         {
             var result = _brandService.Add(brand);
             if (result.Success)
             {
-                return Ok();
+                return Ok(result.Message);
             }
             return BadRequest();
         }
