@@ -17,5 +17,9 @@ namespace Business.Constants
         public static string CategoryAdded= "Category Added.!";
         public static string RentalAdd= "Araba Kiralandı..!";
         public static string RentalInvalide= "Araba Kiralananmadı..!";
+        public static string CarImage5="Bir araca en fazla 5 fotoğraf yüklenebilir.";
+        public static string CarImageUpdate= "İlgili aracın resmi güncellendi!";
+        public static string CarImageDelete= "İlgili aracın ilgili resmi silindi";
+        public static string CarImageAdded= "Resim Başarıyla Yüklendii";
     }
 }
