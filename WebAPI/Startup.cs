@@ -45,6 +45,7 @@ namespace WebAPI
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });
             });
 
+            services.AddCors();
 
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
@@ -62,7 +63,7 @@ namespace WebAPI
                         IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
                     };
                 });
-            services.AddDependencyResolvers(new ICoreModule[] { 
+            services.AddDependencyResolvers(new ICoreModule[] {
                 new CoreModule()
             });
         }
@@ -78,6 +79,9 @@ namespace WebAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPI v1"));
             }
+            app.ConfigureCustomExceptionMiddleware();
+
+            app.UseCors(builder=>builder.WithOrigins("http://localhost:4300").AllowAnyHeader());
 
             app.UseHttpsRedirection();
 

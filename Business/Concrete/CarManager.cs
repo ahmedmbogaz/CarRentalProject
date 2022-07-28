@@ -28,7 +28,7 @@ namespace Business.Concrete
         }
 
         
-        [SecuredOperation("product.add,admin")]
+        //[SecuredOperation("product.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
         [CacheRemoveAspect("ICarService.Get")]
         public IResult Add(Car car)
@@ -46,11 +46,17 @@ namespace Business.Concrete
         [CacheAspect]
         public IDataResult<List<Car>> GetAll()
         {
-            if (DateTime.Now.Hour==10)
+            if (DateTime.Now.Hour==3)
             {
                 return new ErrorDataResult<List<Car>>(Messages.CarNameEror);
             }
             return new SuccessDataResult <List<Car>>( _carDal.GetAll(), Messages.CarAdded);
+        }
+
+        [CacheAspect]
+        public IDataResult<Car> GetById(int id)
+        {
+            return new SuccessDataResult<Car>(_carDal.Get(p => p.Id == id), Messages.CarGottenById);
         }
 
         public IDataResult<List<CarDetailDto>> GetCarDetails()
@@ -63,14 +69,15 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Car>>( _carDal.GetAll(p=>p.DaliyPrice>=min && p.DaliyPrice<=max));
         }
 
-        public IDataResult<List<Car>> GetCarsByBrandId(int id)
+        // brandId benim gönderdiğim ID ye eşit ise onları filtrele demek
+        public IDataResult<List<CarDetailDto>> GetCarsDetailByBrandId(int id)
         {
-            return new SuccessDataResult<List<Car>> (_carDal.GetAll(p=>p.BrandId==id)); // brandId benim gönderdiğim ID ye eşit ise onları filtrele demek
+            return new SuccessDataResult<List<CarDetailDto>> (_carDal.GetCarDetails(p=>p.BrandId==id),Messages.CarListed); 
         }
 
-        public IDataResult<List<Car>> GetCarsByColourId(int id)
+        public IDataResult<List<CarDetailDto>> GetCarsDetailByColourId(int id)
         {
-            return new SuccessDataResult<List<Car>> (_carDal.GetAll(p => p.ColorId == id));
+            return new SuccessDataResult<List<CarDetailDto>> (_carDal.GetCarDetails(p => p.ColorId == id),Messages.CarListed);
         }
 
         [ValidationAspect(typeof(CarValidator))]
@@ -93,5 +100,6 @@ namespace Business.Concrete
             Add(car);
             return null;
         }
+
     }
 }
